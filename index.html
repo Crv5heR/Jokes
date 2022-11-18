@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Jokes FE</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Clean-icons.css">
+    <link rel="stylesheet" href="assets/css/Hero-Clean-Reverse-images.css">
+</head>
+
+<body style="background: rgb(18,17,17);" onload="getRandomJoke()">
+    <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><i class="far fa-star"></i></span><span>Jokes</span></a>
+            <div class="collapse navbar-collapse" id="navcol-5">
+                <ul class="navbar-nav ms-auto">
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main></main>
+    <div class="container py-4 py-xl-5">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-uppercase fw-bold" id="joke_setup" style="color: rgb(255,255,255);">Joke setup</h2>
+                    <p id="joke_punchline" class="my-3" style="color: rgb(255,255,255);">JOKE PUNCHLINE</p>
+                    <a class="btn btn-primary btn-lg me-2" role="button" id="getRandom" onclick="getRandomJoke()" href="#">Get a random joke</a>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 100px;" src="https://images.vexels.com/media/users/3/134615/isolated/preview/36d955206f05f36a3d4c053c2fea3937-joke-emoji-emoticon.png"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center py-4" style="transition: ease-in;">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col">
+                    <p class="text-muted my-2">Made by CruSheR</p>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="https://github.com/Crv5heR/Jokes">View Source</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<script>
+    function getRandomJoke() {
+        fetch('https://official-joke-api.appspot.com/jokes/random')
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("joke_setup").innerHTML = data.setup;
+            document.getElementById("joke_punchline").innerHTML = data.punchline;
+            document.getElementById("getRandom").innerHTML = "Joke Type: "+data.type;
+            console.log(data)
+        });
+        
+    }
+</script>
